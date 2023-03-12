@@ -1106,7 +1106,6 @@
 			elem.click();
 			document.body.removeChild(elem);
 		}
-		// save_button.addEventListener("click", save.bind(null, data_file));
 
 		function srb_arrayFromTSVString(tsvString) {
 			const lines = tsvString.split("\n");
@@ -1171,24 +1170,25 @@
 			return cycles_indices;
 		}
 
-		function srb_csvStringCVCycles(data, options = {}) {
+		function srb_arrayCVCycles(data, options = {}) {
 			// data - csv string, first row are the names of the values
 			// options - { skip, time_column, potential_column }, the options passed to srb_indicesOfCycles and srb_indicesOfChangeOfPotentialDirection functions
 			const data_array = srb_arrayFromTSVString(data);
 			const cycles_indices = srb_indicesOfCycles(data_array, options);
-			
-			console.log(cycles_indices);
+			const number_of_cycles = cycles_indices.length - 1;
+			for(let index in cycles_indices) {}
+
+		}
+
+		function srb_csvFileFromArray(array, name = "") {
+			return new File([ array.reduce( (acc, cur) => { acc + cur.join(",") + "\n"; } , "" ) ], name, { type: "text/csv" });
 		}
 
 
 		function convert() {
-			srb_csvStringCVCycles(data_input.value, { skip: true });
-			// const transposed_data_array = srb_transposed2DArray(data_array);
-			// const indices = srb_indicesOfChangeOfPotentialDirection(data_array);
-			// const cycles_indices = srb_indicesOfCycles(data_array);
-			// console.log(srb_indicesOfChangeOfPotentialDirection(transposeArray));
-			
-			// const data_file = new File(["hola"], "data", {type: "text/csv"});
+			const cv_cycles = srb_arrayCVCycles(data_input.value, { skip: true });
+			console.log(cv_cycles);
+			// const data_file = new File([ srb_csvStringFromArray(cv_cycles) ], "data", { type: "text/csv" });
 			// save(data_file);
 		}
 

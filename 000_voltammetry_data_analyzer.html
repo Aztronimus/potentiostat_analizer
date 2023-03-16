@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Analizador de datos de voltametría</title>
+	<link rel="stylesheet" type="text/css" href="../css/general_style.css"/>
+	<link rel="stylesheet" type="text/css" href="../page_style/style_2.css"/>
+	<style type="text/css">
+		input[type="file"] {
+			border: 1px solid var(--contrast-a1);
+			align-self: center;
+			width: 100%;
+			height: 20%;
+			text-align: center;
+			box-align: center;
+			vertical-align: center;
+			border-radius: 8px;
+		}
+	</style>
+</head>
+<body>
+	<nav id="navbar">
+		<header>
+			<h1>Analizador de datos de voltametría</h1>
+			<h2>StrawRedBerry</h2>
+		</header>
+		<div class="button selected">Archivos</div>
+		<div class="button">Cambio de espacio</div>
+		<div class="button">Tratamiento de datos</div>
+	</nav>
+	<div class="page selected">
+		<h1>Archivos</h1>
+		<input id="csv_files" type="file" multiple/>
+	</div>
+	<div class="page">
+		<h1>Cambio de espacio</h1>
+	</div>
+	<div class="page">
+		<h1>Tratamiento de datos</h1>
+	</div>
+	<script type="text/javascript" src="../page_style/style_2.js"></script>
+	<script type="text/javascript" src="csv_handler.js"></script>
+	<script type="text/javascript">
+		const CSV_FILES = document.getElementById("csv_files");
+		CSV_FILES.addEventListener("change", evt => {
+			console.log(evt);
+		});
+	</script>
+</body>
+</html>

@@ -20,6 +20,8 @@
 	</style>
 </head>
 <body>
+	<div>
+	</div>
 	<nav id="navbar">
 		<header>
 			<h1>Analizador de datos de voltametría</h1>
@@ -43,8 +45,10 @@
 	<script type="text/javascript" src="csv_handler.js"></script>
 	<script type="text/javascript">
 		const CSV_FILES = document.getElementById("csv_files");
+		let files;
 		CSV_FILES.addEventListener("change", evt => {
-			console.log(evt);
+			files = CSV_FILES.files;
+			console.dir(files)
 		});
 	</script>
 </body>
